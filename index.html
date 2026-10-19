@@ -1,0 +1,352 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Analyst Desk · Week 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a statistical-release sheet — slim masthead, tab strip of three desks, one task column (~44rem) of numbered items */
+:root{
+  --paper:#f6f7f4; --sheet:#ffffff; --ink:#1d2421; --muted:#5d6762; --rule:#d9ddd6;
+  --accent:#0f6b5c; --accent-soft:#e1efe9; --mark:#b4561c;
+  --ok:#1f7a3a; --ok-bg:#e5f3e8; --bad:#b3261e; --bad-bg:#fbe9e7;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121614; --sheet:#1a1f1c; --ink:#e6ebe7; --muted:#9aa49e; --rule:#2e3531;
+  --accent:#5cc2ab; --accent-soft:#1d2f2a; --mark:#e08a50;
+  --ok:#6fcf8a; --ok-bg:#183222; --bad:#f08a80; --bad-bg:#3a1d1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121614; --sheet:#1a1f1c; --ink:#e6ebe7; --muted:#9aa49e; --rule:#2e3531;
+  --accent:#5cc2ab; --accent-soft:#1d2f2a; --mark:#e08a50;
+  --ok:#6fcf8a; --ok-bg:#183222; --bad:#f08a80; --bad-bg:#3a1d1a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 var(--f-body);padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:46rem;margin:0 auto}
+header.mast{padding-block:20px 12px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink)}
+.mast h1{font:700 1.9rem/1.05 var(--f-display);margin:0;letter-spacing:.01em;text-wrap:balance}
+.mast .kicker{font:600 .72rem/1 var(--f-data);text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
+.variant{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:.8rem var(--f-data);color:var(--muted)}
+.variant b{color:var(--ink);font-size:.95rem}
+.variant input{width:5.5em;font:inherit;padding:4px 6px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);border-radius:4px}
+button{font:600 .85rem var(--f-body);cursor:pointer;border-radius:5px;border:1px solid var(--accent);background:var(--accent);color:var(--sheet);padding:7px 14px}
+button.ghost{background:transparent;color:var(--accent)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+nav.tabs{display:flex;gap:4px;margin-top:14px;overflow-x:auto;border-bottom:1px solid var(--rule)}
+nav.tabs a{flex:0 0 auto;text-decoration:none;color:var(--muted);font:600 .9rem var(--f-display);padding:8px 12px;border-bottom:3px solid transparent;letter-spacing:.02em}
+nav.tabs a[aria-current="true"]{color:var(--ink);border-color:var(--accent)}
+nav.tabs .sc{font:.75rem var(--f-data);color:var(--accent);margin-left:6px}
+.intro{color:var(--muted);font-size:.9rem;margin:14px 0 4px;max-width:65ch}
+section.desk h2{font:700 1.35rem/1.2 var(--f-display);margin:22px 0 4px}
+section.desk h3{font:600 .78rem/1 var(--f-data);text-transform:uppercase;letter-spacing:.1em;color:var(--mark);margin:28px 0 10px}
+.lede{max-width:65ch;margin:0 0 10px}
+.tablebox{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;margin:10px 0 6px}
+table{border-collapse:collapse;width:100%;font:.88rem var(--f-data);font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font:600 .75rem var(--f-body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+.task{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:12px 14px;margin:10px 0;display:grid;gap:8px}
+.task .q{display:flex;gap:10px}
+.task .n{font:600 .8rem var(--f-data);color:var(--accent);min-width:2.2em;padding-top:2px}
+.task .qt{min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-left:calc(2.2em + 10px)}
+.row input[type=text]{width:9.5em;font:1rem var(--f-data);padding:6px 8px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink)}
+.unit{font:.85rem var(--f-data);color:var(--muted)}
+.fb{padding-left:calc(2.2em + 10px);font-size:.88rem}
+.fb .ok{color:var(--ok);font-weight:600}
+.fb .bad{color:var(--bad);font-weight:600}
+.sol{background:var(--accent-soft);border-radius:4px;padding:8px 10px;margin-top:6px;font-size:.88rem}
+.sol code,.mono{font-family:var(--f-data);font-size:.85rem}
+.task.done-ok{border-color:var(--ok)}
+.task.done-bad{border-color:var(--bad)}
+.opts{display:grid;gap:6px;padding-left:calc(2.2em + 10px)}
+.opts label{display:flex;gap:8px;align-items:flex-start;padding:6px 8px;border:1px solid var(--rule);border-radius:4px;cursor:pointer;background:var(--paper)}
+.opts input{margin-top:4px}
+.cards{display:grid;gap:8px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;display:grid;gap:8px}
+.card p{margin:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{background:var(--paper);color:var(--ink);border-color:var(--rule);font-weight:500;padding:6px 10px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.card.ok{border-color:var(--ok);background:var(--ok-bg)}
+.card.bad{border-color:var(--bad);background:var(--bad-bg)}
+.card .why{font-size:.85rem;color:var(--ink)}
+.headline{font:600 1.02rem/1.35 var(--f-display);letter-spacing:.01em}
+.headline::before{content:"DATA · ";font:600 .7rem var(--f-data);color:var(--mark);letter-spacing:.1em}
+.selrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:8px}
+.selrow label{display:grid;gap:3px;font-size:.78rem;color:var(--muted)}
+select{font:.92rem var(--f-body);padding:6px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink);width:100%}
+.diagram{max-width:320px}
+.diagram svg{width:100%;height:auto;display:block}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.summary{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:16px;display:grid;gap:10px}
+.sumrow{display:flex;justify-content:space-between;gap:12px;font:1rem var(--f-data);border-bottom:1px dashed var(--rule);padding-bottom:6px}
+.code{font:600 1.4rem var(--f-data);letter-spacing:.06em;color:var(--accent)}
+.small{font-size:.82rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.task,.card{transition:border-color .2s,background-color .2s}}
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <div>
+    <div class="kicker">Economics for Investors · Week 5</div>
+    <h1>Analyst Desk</h1>
+  </div>
+  <div class="variant">
+    <span>Variant <b id="seedShow">—</b></span>
+    <label for="seedIn" class="small">Open variant</label>
+    <input id="seedIn" type="text" inputmode="numeric" maxlength="4" aria-label="Variant number">
+    <button class="ghost" id="seedGo" type="button">Open</button>
+    <button class="ghost" id="seedNew" type="button">New variant</button>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Desks">
+  <a href="#desk1" data-tab="desk1">1 · Dashboard<span class="sc" id="tab1"></span></a>
+  <a href="#desk2" data-tab="desk2">2 · Sector signals<span class="sc" id="tab2"></span></a>
+  <a href="#desk3" data-tab="desk3">3 · Credit and portfolio<span class="sc" id="tab3"></span></a>
+  <a href="#summary" data-tab="summary">Summary</a>
+</nav>
+<p class="intro">Your numbers are generated for your variant, so your neighbour's answers will differ — compare reasoning, not results. Each question allows two attempts; after that, or when you ask for it, the solution opens. Enter decimals with a point or a comma. Round answers to two decimal places; enter percentages as 5.26, not 0.0526.</p>
+
+<section class="desk" id="desk1"></section>
+<section class="desk" id="desk2" hidden></section>
+<section class="desk" id="desk3" hidden></section>
+<section class="desk" id="summary" hidden></section>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- utilities ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var R; function rnd(){return R();} function ri(a,b){return a+Math.floor(rnd()*(b-a+1));}
+function pick(arr){return arr[Math.floor(rnd()*arr.length)];}
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(rnd()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function fmt(x,d){d=d||0;var s=Number(x).toFixed(d);var p=s.split(".");p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g," ");return p.join(".");}
+function parseNum(s){if(s==null)return NaN;s=String(s).trim().replace(/\s| /g,"").replace(",",".").replace("%","");if(s==="")return NaN;return Number(s);}
+function el(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==="class")e.className=attrs[k];else e.setAttribute(k,attrs[k]);}if(html!=null)e.innerHTML=html;return e;}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+
+/* scoring: score[desk] = {id: 0|1} */
+var score={desk1:{},desk2:{},desk3:{}};
+var maxPts={desk1:0,desk2:0,desk3:0};
+function setScore(desk,id,v){score[desk][id]=v;updateTabs();}
+function deskPts(d){var s=0;for(var k in score[d])s+=score[d][k];return s;}
+function updateTabs(){["desk1","desk2","desk3"].forEach(function(d,i){var n=Object.keys(score[d]).length;document.getElementById("tab"+(i+1)).textContent=n?deskPts(d)+"/"+maxPts[d]:"";});if(!document.getElementById("summary").hidden)renderSummary();}
+
+/* numeric task: opts {desk,id,n,q,unit,answer,tol(abs),rtol(rel),solution} */
+function numTask(parent,o){
+  maxPts[o.desk]++;
+  var box=el("div",{class:"task"});
+  box.innerHTML='<div class="q"><span class="n">'+o.n+'</span><div class="qt">'+o.q+'</div></div>';
+  var row=el("div",{class:"row"});
+  var inp=el("input",{type:"text",inputmode:"decimal",id:o.desk+"-"+o.id,"aria-label":"Answer "+o.n,autocomplete:"off"});
+  var bt=el("button",{type:"button"},"Check"); var sb=el("button",{type:"button",class:"ghost"},"Show solution");
+  row.appendChild(inp); if(o.unit)row.appendChild(el("span",{class:"unit"},o.unit)); row.appendChild(bt); row.appendChild(sb);
+  var fb=el("div",{class:"fb","aria-live":"polite"});
+  box.appendChild(row); box.appendChild(fb); parent.appendChild(box);
+  var tries=0, closed=false;
+  function reveal(ok){closed=true;bt.disabled=true;sb.disabled=true;inp.readOnly=true;box.classList.add(ok?"done-ok":"done-bad");
+    fb.innerHTML=(ok?'<span class="ok">Correct.</span>':'<span class="bad">'+(tries>=2?"Two attempts used.":"Solution opened.")+'</span>')+'<div class="sol">'+o.solution+'</div>';
+    setScore(o.desk,o.id,ok?1:0);}
+  function check(){if(closed)return;var v=parseNum(inp.value);if(isNaN(v)){fb.innerHTML='<span class="bad">Enter a number.</span>';return;}
+    var tol=Math.max(o.tol||0,Math.abs(o.answer)*(o.rtol||0));tries++;
+    if(Math.abs(v-o.answer)<=tol+1e-9){reveal(true);}else if(tries>=2){reveal(false);}else{fb.innerHTML='<span class="bad">Not quite.</span> One more attempt. '+(o.hint||"");}}
+  bt.addEventListener("click",check); inp.addEventListener("keydown",function(e){if(e.key==="Enter")check();});
+  sb.addEventListener("click",function(){if(!closed)reveal(false);});
+}
+/* multiple choice task: opts {desk,id,n,q,options:[..],correct:index,solution} options shuffled */
+function mcTask(parent,o){
+  maxPts[o.desk]++;
+  var box=el("div",{class:"task"});
+  box.innerHTML='<div class="q"><span class="n">'+o.n+'</span><div class="qt">'+o.q+'</div></div>';
+  var opts=el("div",{class:"opts",role:"radiogroup"});
+  var order=shuffle(o.options.map(function(_,i){return i;}));
+  var letters="ABCD";
+  order.forEach(function(oi,k){var id=o.desk+"-"+o.id+"-"+k;var lab=el("label",{for:id});lab.innerHTML='<input type="radio" name="'+o.desk+"-"+o.id+'" id="'+id+'" value="'+oi+'"><span><b>'+letters[k]+'.</b> '+o.options[oi]+'</span>';opts.appendChild(lab);});
+  var row=el("div",{class:"row"}); var bt=el("button",{type:"button"},"Check"); row.appendChild(bt);
+  var fb=el("div",{class:"fb","aria-live":"polite"});
+  box.appendChild(opts); box.appendChild(row); box.appendChild(fb); parent.appendChild(box);
+  var tries=0,closed=false;
+  bt.addEventListener("click",function(){if(closed)return;var sel=opts.querySelector("input:checked");if(!sel){fb.innerHTML='<span class="bad">Choose an option.</span>';return;}
+    tries++;var ok=Number(sel.value)===o.correct;
+    if(ok||tries>=2){closed=true;bt.disabled=true;opts.querySelectorAll("input").forEach(function(i){i.disabled=true;});box.classList.add(ok?"done-ok":"done-bad");
+      fb.innerHTML=(ok?'<span class="ok">Correct.</span>':'<span class="bad">Two attempts used.</span>')+'<div class="sol">'+o.solution+'</div>';setScore(o.desk,o.id,ok?1:0);}
+    else fb.innerHTML='<span class="bad">Not quite.</span> One more attempt.';});
+}
+
+function classify(parent,desk,id,items,labels,explain){
+  var wrap=el("div",{class:"cards"}); var picks={};
+  items.forEach(function(it,k){var c=el("div",{class:"card"});c.appendChild(el("p",null,it.t));var seg=el("div",{class:"seg",role:"group","aria-label":"Classification"});
+    labels.forEach(function(lb,j){var b=el("button",{type:"button","aria-pressed":"false",id:desk+"-"+id+"-"+k+"-"+j},lb);b.addEventListener("click",function(){if(c.dataset.locked)return;picks[k]=j;seg.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");});seg.appendChild(b);});
+    c.appendChild(seg);var why=el("p",{class:"why"});why.hidden=true;c.appendChild(why);wrap.appendChild(c);it._c=c;it._w=why;});
+  parent.appendChild(wrap);
+  maxPts[desk]+=items.length;
+  var row=el("div",{class:"actions"});var bt=el("button",{type:"button"},"Check all");var fb=el("span",{class:"small","aria-live":"polite"});row.appendChild(bt);row.appendChild(fb);parent.appendChild(row);
+  bt.addEventListener("click",function(){
+    if(Object.keys(picks).length<items.length){fb.textContent="Classify every item first ("+Object.keys(picks).length+" of "+items.length+" done).";return;}
+    var ok=0;items.forEach(function(it,k){var good=picks[k]===it.a;if(good)ok++;it._c.classList.add(good?"ok":"bad");it._c.dataset.locked="1";it._w.hidden=false;
+      it._w.innerHTML=(good?"<b>Correct.</b> ":"<b>Answer: "+labels[it.a]+".</b> ")+(it.w||explain(it));setScore(desk,id+"-"+k,good?1:0);});
+    bt.disabled=true;fb.textContent=ok+" of "+items.length+" correct.";});
+}
+/* ---------- DESK 1: dashboard, output gap ---------- */
+var PH=["Trough → recovery","Expansion","Peak → slowdown","Contraction"];
+function buildDesk1(){
+  var s=document.getElementById("desk1"); s.innerHTML="";
+  var sc=pick([0,1,2,3]); /* 0 recovery,1 expansion,2 slowdown,3 contraction */
+  var g=[];
+  if(sc===1){g[0]=-ri(0,8)/10;g[1]=g[0]+ri(5,10)/10;g[2]=g[1]+ri(4,8)/10;g[3]=g[2]+ri(4,8)/10;}
+  if(sc===2){g[0]=ri(5,12)/10;g[1]=g[0]+ri(3,6)/10;g[2]=g[1]+ri(1,3)/10;g[3]=g[2]-ri(4,8)/10;}
+  if(sc===3){g[0]=ri(2,8)/10;g[1]=g[0]-ri(5,9)/10;g[2]=g[1]-ri(5,9)/10;g[3]=g[2]-ri(5,9)/10;}
+  if(sc===0){g[0]=-ri(25,35)/10;g[1]=g[0]-ri(2,5)/10;g[2]=g[1]+ri(3,6)/10;g[3]=g[2]+ri(4,8)/10;}
+  var gs=ri(4,6)/1000, P0=ri(4500,5200)*10, Ps=[],Y=[];
+  for(var q=0;q<4;q++){Ps[q]=Math.round(P0*Math.pow(1+gs,q));Y[q]=Math.round(Ps[q]*(1+g[q]/100));}
+  var gap=Y.map(function(y,q){return (y/Ps[q]-1)*100;});
+  var gr=[1,2,3].map(function(q){return (Y[q]/Y[q-1]-1)*100;});
+  var pgr=(Ps[3]/Ps[2]-1)*100;
+  var phase=gap[3]>0?(gap[3]>gap[2]?1:2):(gap[3]<gap[2]?3:0);
+  s.appendChild(el("h2",null,"Desk 1 · Dashboard: output gap and phase"));
+  s.appendChild(el("p",{class:"lede"},"Quarterly real GDP and the central bank's estimate of potential GDP, billions of RUB at constant prices, seasonally adjusted."));
+  var t='<table><thead><tr><th>Quarter</th><th>Real GDP</th><th>Potential GDP</th></tr></thead><tbody>';
+  for(q=0;q<4;q++)t+='<tr><td>Q'+(q+1)+'</td><td>'+fmt(Y[q])+'</td><td>'+fmt(Ps[q])+'</td></tr>';
+  s.appendChild(el("div",{class:"tablebox"},t+'</tbody></table>'));
+  numTask(s,{desk:"desk1",id:"g3",n:"1.1",q:"Output gap in Q3, % of potential GDP.",unit:"%",answer:gap[2],tol:0.011,
+    solution:"Output gap = (Y − Y*) / Y* × 100 = <span class=mono>("+fmt(Y[2])+" / "+fmt(Ps[2])+" − 1) × 100 = "+fmt(gap[2],2)+"%</span>."});
+  numTask(s,{desk:"desk1",id:"g4",n:"1.2",q:"Output gap in Q4, % of potential GDP.",unit:"%",answer:gap[3],tol:0.011,
+    solution:"<span class=mono>("+fmt(Y[3])+" / "+fmt(Ps[3])+" − 1) × 100 = "+fmt(gap[3],2)+"%</span>. "+(gap[3]>0?"Positive: an inflationary gap.":"Negative: a recessionary gap.")});
+  numTask(s,{desk:"desk1",id:"gr",n:"1.3",q:"Real GDP growth in Q4 relative to Q3 (quarter on quarter).",unit:"%",answer:gr[2],tol:0.011,
+    solution:"<span class=mono>("+fmt(Y[3])+" / "+fmt(Y[2])+" − 1) × 100 = "+fmt(gr[2],2)+"%</span>. Potential output grew by "+fmt(pgr,2)+"% in the same quarter. "+(gr[2]>pgr?"Actual growth is faster than potential growth, so the gap rises.":"Actual growth is slower than potential growth, so the gap falls.")+" Real GDP can grow while the economy moves towards a recession: what matters for the growth cycle is growth relative to potential."});
+  mcTask(s,{desk:"desk1",id:"ph",n:"1.4",q:"Use the growth cycle: the sign of the output gap and whether it rose or fell from Q3 to Q4. Which phase is the economy in?",
+    options:PH,correct:phase,
+    solution:"Gap in Q4: "+fmt(gap[3],2)+"%, "+(gap[3]>gap[2]?"up":"down")+" from "+fmt(gap[2],2)+"% in Q3. Positive and rising → expansion; positive and falling → peak / slowdown; negative and falling → contraction; negative and rising → trough / recovery."});
+  var techRec=gr[1]<0&&gr[2]<0;
+  mcTask(s,{desk:"desk1",id:"tr",n:"1.5",q:"Does the data show a technical recession by the two-quarter rule?",
+    options:["Yes: real GDP fell in each of the last two quarters.","No: real GDP did not fall in both of the last two quarters.","It cannot be decided without the output gap."],correct:techRec?0:1,
+    solution:"Q3 vs Q2: "+fmt(gr[1],2)+"%; Q4 vs Q3: "+fmt(gr[2],2)+"%. "+(techRec?"Two consecutive declines: a technical recession.":"No two consecutive declines, so the rule of thumb does not signal a recession.")+(phase===3&&!techRec?" Yet the gap is negative and widening: the economy is contracting relative to potential. Dating committees such as the NBER look at many indicators, not only GDP.":"")+" The rule uses only real GDP; the output gap is not needed."});
+  var infl=gap[3]>0;
+  mcTask(s,{desk:"desk1",id:"tilt",n:"1.6",q:"Given the output gap in Q4 ("+fmt(gap[3],2)+"%), which portfolio tilt fits best?",
+    options:["Increase cyclical companies and commodity producers; reduce long-term bonds.","Increase defensive companies and government bonds; reduce cyclical companies.","Increase long-term bonds and commodity producers; reduce defensive companies."],correct:infl?0:1,
+    solution:infl?"An inflationary gap: profits, commodity prices and interest rates tend to rise. Cyclicals and commodity producers benefit; long-term bond prices fall as rates go up.":"A recessionary gap: profits and commodity prices fall, interest rates tend to fall. Defensive companies and high-quality bonds (especially long-term) benefit."});
+}
+
+/* ---------- DESK 2: sector signals ---------- */
+var SIG=[
+ {t:"Layoffs have slowed, but firms are not hiring permanent staff yet; they use more overtime and temporary workers.",a:0,w:"Trough → recovery: firms first raise hours of existing staff before they trust the recovery enough to hire."},
+ {t:"Firms rebuild inventories they ran down, so production grows faster than sales.",a:0,w:"Trough → recovery: restocking near the trough lifts output."},
+ {t:"GDP has stopped falling and growth has just turned positive; inflation is moderate and may still decline.",a:0,w:"Trough → recovery."},
+ {t:"Hiring increases and unemployment falls; firms invest in new equipment and buildings.",a:1,w:"Expansion: robust demand justifies new capacity and new staff."},
+ {t:"Consumer spending is robust, and imports rise together with domestic income.",a:1,w:"Expansion."},
+ {t:"Long-term investment projects are launched; banks lend readily and at low spreads.",a:1,w:"Expansion: easy credit and confidence support long-horizon projects (the upswing of the credit cycle)."},
+ {t:"Sales slow unexpectedly, unsold goods accumulate and the inventory–sales ratio rises above normal.",a:2,w:"Peak → slowdown: an unplanned inventory build signals that production cuts are coming."},
+ {t:"Growth slows, hiring slows and unemployment falls only slowly; inflation accelerates.",a:2,w:"Peak → slowdown."},
+ {t:"Business investment still grows, but more slowly, and growth of imports slows.",a:2,w:"Peak → slowdown."},
+ {t:"Firms cut hours first and then lay workers off; unemployment rises.",a:3,w:"Contraction."},
+ {t:"The sharpest cuts are in housing, business investment and purchases of cars and appliances.",a:3,w:"Contraction: postponable spending — durables, housing, equipment — falls most."},
+ {t:"Imports fall; inflation slows down with a lag.",a:3,w:"Contraction."}
+];
+function buildDesk2(){
+  var s=document.getElementById("desk2"); s.innerHTML="";
+  s.appendChild(el("h2",null,"Desk 2 · Sector signals"));
+  s.appendChild(el("h3",null,"Match each signal to a phase"));
+  s.appendChild(el("p",{class:"lede"},"Each statement describes what the data show in one phase of the cycle (the phase table on the slides)."));
+  var items=[];[0,1,2,3].forEach(function(p){items=items.concat(shuffle(SIG.filter(function(x){return x.a===p;})).slice(0,2));});
+  classify(s,"desk2","sig",shuffle(items),PH);
+  /* inventory-sales ratio */
+  var build=rnd()<0.5, S1=ri(900,1300)*10, r1=ri(130,145)/100, I1=Math.round(S1*r1/10)*10;
+  var S2,I2; if(build){S2=Math.round(S1*(1-ri(2,5)/100)/10)*10;I2=Math.round(I1*(1+ri(2,5)/100)/10)*10;}else{S2=Math.round(S1*(1+ri(4,7)/100)/10)*10;I2=Math.round(I1*(1-ri(3,6)/100)/10)*10;}
+  var R1=I1/S1,R2=I2/S2;
+  s.appendChild(el("h3",null,"Inventory–sales ratio"));
+  s.appendChild(el("p",{class:"lede"},"Manufacturing and trade, billions of RUB. Sales are monthly averages for the quarter; inventories are at the end of the quarter."));
+  s.appendChild(el("div",{class:"tablebox"},'<table><thead><tr><th>Quarter</th><th>Sales</th><th>Inventories</th></tr></thead><tbody><tr><td>Q1</td><td>'+fmt(S1)+'</td><td>'+fmt(I1)+'</td></tr><tr><td>Q2</td><td>'+fmt(S2)+'</td><td>'+fmt(I2)+'</td></tr></tbody></table>'));
+  numTask(s,{desk:"desk2",id:"r1",n:"2.1",q:"Inventory–sales ratio in Q1 (months of sales).",answer:R1,tol:0.0051,solution:"<span class=mono>"+fmt(I1)+" / "+fmt(S1)+" = "+fmt(R1,2)+"</span>: stocks cover about "+fmt(R1,2)+" months of sales."});
+  numTask(s,{desk:"desk2",id:"r2",n:"2.2",q:"Inventory–sales ratio in Q2.",answer:R2,tol:0.0051,solution:"<span class=mono>"+fmt(I2)+" / "+fmt(S2)+" = "+fmt(R2,2)+"</span>."});
+  mcTask(s,{desk:"desk2",id:"inv",n:"2.3",q:"Sales "+(build?"fell":"rose")+" and inventories "+(build?"rose":"fell")+". What should an analyst expect next?",
+    options:["Firms will cut production to work off unwanted stocks: a signal of a slowdown.","Firms will raise production to rebuild stocks: a signal typical of the trough and early recovery.","No signal: inventories are too volatile to interpret."],correct:build?0:1,
+    solution:build?"The ratio rose from "+fmt(R1,2)+" to "+fmt(R2,2)+" because goods were not sold, not because firms planned to stock up. Production cuts follow — one mechanism of the contraction. Note that the unplanned inventory build itself adds to GDP for now.":"The ratio fell from "+fmt(R1,2)+" to "+fmt(R2,2)+": demand is outrunning production. Firms will raise output to rebuild stocks, which supports growth in the next quarters."});
+}
+
+/* ---------- DESK 3: credit and portfolio ---------- */
+var STRAT=["Downturn","Recovery","Acceleration","Slowdown"];
+var ASSETS=["Bonds","Stocks","Money market (cash)","Commodity assets"];
+var SCEN=[
+ {p:0,ow:[0],uw:[3],t:["Real GDP has fallen for two quarters and unemployment is rising. Inflation is easing, the central bank has started to cut its rate, and commodity prices are falling.","Industrial production and retail sales are falling, layoffs are spreading, and the yield curve has started to steepen as policy rates are cut."],w:"Downturn: falling rates lift bond prices; commodity demand and prices fall."},
+ {p:1,ow:[1],uw:[2],t:["GDP has stopped falling and growth has turned slightly positive. Layoffs have slowed, inflation is low and the policy rate is at its low; leading indicators turned up three months ago.","The stock market has risen for two quarters although unemployment is still high; new orders and building permits are recovering from their lows."],w:"Recovery: stocks gain most as earnings recover; cash earns low rates and should be put to work."},
+ {p:2,ow:[3,1],uw:[0,2],t:["Growth is above potential and rising, unemployment is falling fast and capacity utilisation is high. Inflation is picking up, commodity prices rise and the central bank has begun to raise its rate.","Firms report shortages of workers and materials, wages accelerate, and credit is growing faster than GDP; the policy rate is being raised."],w:"Acceleration: commodity assets and stocks do best; rising rates hurt bonds, and cash returns lag inflation. (Overweight: commodity assets or stocks; underweight: bonds or cash.)"},
+ {p:3,ow:[0],uw:[1],t:["Growth is still positive but slowing; leading indicators have turned down. Inflation is high and the central bank keeps its rate high; the inventory–sales ratio is rising.","Corporate profit growth is slowing, the yield curve has flattened, and banks report tighter lending standards while inflation remains above target."],w:"Slowdown: stocks often fall; bonds gain once rates approach their peak."}
+];
+function buildDesk3(){
+  var s=document.getElementById("desk3"); s.innerHTML="";
+  s.appendChild(el("h2",null,"Desk 3 · Credit and portfolio"));
+  /* credit-to-GDP gap */
+  var Gd=ri(1800,2100)/10, ratio0=ri(560,720)/10, gtarget=ri(-10,130)/10;
+  var C=Math.round(Gd*ratio0)/100; C=Math.round(C*10)/10;
+  var ratio=C/Gd*100, trend=Math.round((ratio-gtarget)*10)/10, gap=ratio-trend;
+  var buf=Math.max(0,Math.min(2.5,(gap-2)/8*2.5));
+  var reg=gap<2?0:(gap<10?1:2);
+  s.appendChild(el("h3",null,"Credit-to-GDP gap"));
+  s.appendChild(el("p",{class:"lede"},"Bank credit to the private non-financial sector: <b class=mono>"+fmt(C,1)+"</b> trn RUB. Nominal GDP over the last four quarters: <b class=mono>"+fmt(Gd,1)+"</b> trn RUB. The long-run trend of the credit-to-GDP ratio (statistical filter): <b class=mono>"+fmt(trend,1)+"%</b>."));
+  numTask(s,{desk:"desk3",id:"cr",n:"3.1",q:"Credit-to-GDP ratio.",unit:"%",answer:ratio,tol:0.011,solution:"<span class=mono>"+fmt(C,1)+" / "+fmt(Gd,1)+" × 100 = "+fmt(ratio,2)+"%</span>."});
+  numTask(s,{desk:"desk3",id:"cg",n:"3.2",q:"Credit-to-GDP gap.",unit:"pp",answer:gap,tol:0.011,solution:"Gap = ratio − trend = <span class=mono>"+fmt(ratio,2)+" − "+fmt(trend,1)+" = "+fmt(gap,2)+" pp</span>. Percentage points, not per cent: it is a difference between two ratios."});
+  numTask(s,{desk:"desk3",id:"buf",n:"3.3",q:"Basel III guide for the countercyclical capital buffer: 0% of risk-weighted assets when the gap is 2 pp or less, 2.5% when it is 10 pp or more, and linear in between. What buffer does your gap imply?",unit:"%",answer:buf,tol:0.011,
+    solution:(reg===0?"The gap is below 2 pp, so the guide gives <span class=mono>0%</span>.":reg===2?"The gap is at least 10 pp, so the guide gives the maximum <span class=mono>2.5%</span>.":"<span class=mono>(gap − 2) / (10 − 2) × 2.5 = ("+fmt(gap,2)+" − 2) / 8 × 2.5 = "+fmt(buf,2)+"%</span>.")+" Regulators use the guide as a starting point and apply judgement."});
+  mcTask(s,{desk:"desk3",id:"crd",n:"3.4",q:"What does your credit-to-GDP gap tell an analyst?",
+    options:["Credit is close to its long-run trend: no sign of a credit-driven build-up of risk.","Credit is running ahead of its trend: vulnerability is building, and banks start to accumulate a buffer.","A credit boom: the full buffer applies, and history links such booms to deeper and longer recessions afterwards."],correct:reg,
+    solution:"Gap = "+fmt(gap,2)+" pp. Below 2 pp: no signal; between 2 and 10 pp: a build-up; 10 pp and above: a boom. Recessions that follow credit booms are deeper (Jordà, Schularick & Taylor, 2013)."});
+  /* strategy */
+  s.appendChild(el("h3",null,"Positioning over the cycle"));
+  s.appendChild(el("p",{class:"lede"},"For each dashboard, name the phase (the four phases of the strategy slide) and choose one asset class to overweight and one to underweight."));
+  shuffle(SCEN).forEach(function(sc,k){
+    maxPts.desk3++;
+    var c=el("div",{class:"card"});c.appendChild(el("p",{class:"headline"},pick(sc.t)));
+    var sel=el("div",{class:"selrow"});
+    function mk(lbl,opts,id){var l=el("label",{for:id});l.appendChild(document.createTextNode(lbl));var x=el("select",{id:id});x.appendChild(el("option",{value:""},"—"));opts.forEach(function(o,i){x.appendChild(el("option",{value:String(i)},o));});l.appendChild(x);sel.appendChild(l);return x;}
+    var s1=mk("Phase",STRAT,"d3-p-"+k),s2=mk("Overweight",ASSETS,"d3-o-"+k),s3=mk("Underweight",ASSETS,"d3-u-"+k);
+    c.appendChild(sel);
+    var row=el("div",{class:"actions"});var bt=el("button",{type:"button"},"Check");var fb=el("span",{class:"small","aria-live":"polite"});row.appendChild(bt);row.appendChild(fb);c.appendChild(row);
+    var out=el("div",{class:"why"});out.hidden=true;c.appendChild(out);s.appendChild(c);
+    var tries=0;
+    bt.addEventListener("click",function(){
+      if(!s1.value||!s2.value||!s3.value){fb.textContent="Fill in all three fields.";return;}
+      var ok=Number(s1.value)===sc.p&&sc.ow.indexOf(Number(s2.value))>=0&&sc.uw.indexOf(Number(s3.value))>=0;tries++;
+      if(ok||tries>=2){bt.disabled=true;[s1,s2,s3].forEach(function(x){x.disabled=true;});c.classList.add(ok?"ok":"bad");fb.textContent=ok?"Correct.":"Two attempts used.";
+        out.hidden=false;out.innerHTML='<p><b>'+STRAT[sc.p]+': overweight '+sc.ow.map(function(i){return ASSETS[i].toLowerCase();}).join(" or ")+', underweight '+sc.uw.map(function(i){return ASSETS[i].toLowerCase();}).join(" or ")+'.</b> '+sc.w+'</p>';setScore("desk3","s"+k,ok?1:0);}
+      else fb.textContent="Not quite. One more attempt.";});
+  });
+}
+
+/* ---------- summary ---------- */
+function renderSummary(){
+  var s=document.getElementById("summary"); var a=deskPts("desk1"),b=deskPts("desk2"),c=deskPts("desk3");
+  var seed=window.__seed; var chk=(seed*31+a*7+b*13+c*17)%97;
+  var code="W5-"+seed+"-"+a+"."+b+"."+c+"-"+String(chk).padStart(2,"0");
+  s.innerHTML='<h2>Summary</h2><div class="summary">'+
+   '<div class="sumrow"><span>Desk 1 · Dashboard</span><span>'+a+' / '+maxPts.desk1+'</span></div>'+
+   '<div class="sumrow"><span>Desk 2 · Sector signals</span><span>'+b+' / '+maxPts.desk2+'</span></div>'+
+   '<div class="sumrow"><span>Desk 3 · Credit and portfolio</span><span>'+c+' / '+maxPts.desk3+'</span></div>'+
+   '<div><div class="small">Completion code — enter it only if your instructor asks for it</div><div class="code">'+code+'</div></div>'+
+   '<p class="small">Points count answers found within two attempts without opening the solution. For revision, open a new variant: the same tasks with new numbers.</p></div>';
+}
+
+/* ---------- boot ---------- */
+function start(seed){
+  window.__seed=seed; R=mulberry32(seed*2654435761%4294967296);
+  score={desk1:{},desk2:{},desk3:{}}; maxPts={desk1:0,desk2:0,desk3:0};
+  document.getElementById("seedShow").textContent=seed; store("w5seed",String(seed));
+  buildDesk1(); buildDesk2(); buildDesk3(); updateTabs();
+}
+function showTab(id){["desk1","desk2","desk3","summary"].forEach(function(t){document.getElementById(t).hidden=(t!==id);});
+  document.querySelectorAll("nav.tabs a").forEach(function(a){a.setAttribute("aria-current",a.dataset.tab===id?"true":"false");});
+  if(id==="summary")renderSummary();}
+document.querySelectorAll("nav.tabs a").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();showTab(a.dataset.tab);try{history.replaceState(null,"","#"+a.dataset.tab);}catch(_){}});});
+document.getElementById("seedNew").addEventListener("click",function(){start(1000+Math.floor(Math.random()*9000));});
+document.getElementById("seedGo").addEventListener("click",function(){var v=parseInt(document.getElementById("seedIn").value,10);if(v>=1000&&v<=9999)start(v);});
+var saved=parseInt(store("w5seed"),10);
+start(saved>=1000&&saved<=9999?saved:1000+Math.floor(Math.random()*9000));
+var h=(location.hash||"").replace("#","");showTab(["desk1","desk2","desk3","summary"].indexOf(h)>=0?h:"desk1");
+})();
+</script>
+
+</body></html>
